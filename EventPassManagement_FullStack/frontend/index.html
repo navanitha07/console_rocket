@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventPass | Event Management</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">EP</div>
+      <div><div class="brand-name">EventPass</div><div class="brand-sub">College Event Hub</div></div>
+    </div>
+    <nav>
+      <button class="nav-item active" data-page="dashboard">⌂ <span>Dashboard</span></button>
+      <button class="nav-item" data-page="events">◈ <span>Events</span></button>
+      <button class="nav-item" data-page="registrations">✓ <span>Registrations</span></button>
+      <button class="nav-item" data-page="students">♙ <span>Students</span></button>
+      <button class="nav-item" data-page="organizers">◎ <span>Organizers</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="demo-card"><span class="pulse"></span><div><b>Demo mode</b><small>Hardcoded users</small></div></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><div class="eyebrow">COLLEGE EVENT MANAGEMENT</div><h1 id="page-title">Dashboard</h1></div>
+      <div class="profile"><div class="avatar">N</div><div><b>Demo User</b><small>Student / Organizer</small></div></div>
+    </header>
+
+    <section id="dashboard" class="page active">
+      <div class="hero">
+        <div>
+          <span class="tag">EVENT PASS MANAGEMENT</span>
+          <h2>Everything happening<br><em>in one place.</em></h2>
+          <p>Create events, manage capacity, register students and track check-ins.</p>
+          <button class="primary" onclick="openEventModal()">+ Create Event</button>
+        </div>
+        <div class="hero-art">
+          <div class="floating-card">⚡ <b>Live check-ins</b><strong id="hero-checkins">0</strong></div>
+          <div class="orb"></div><div class="ticket">EVENT<br><strong>PASS</strong></div>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><span>EVENTS</span><strong id="stat-events">0</strong><small>Scheduled events</small></div>
+        <div class="stat"><span>STUDENTS</span><strong id="stat-students">0</strong><small>Registered students</small></div>
+        <div class="stat"><span>REGISTRATIONS</span><strong id="stat-registrations">0</strong><small>Total active registrations</small></div>
+        <div class="stat"><span>CHECKED IN</span><strong id="stat-checkins">0</strong><small>Students checked in</small></div>
+      </div>
+      <div class="section-head">
+        <div><span class="eyebrow">OVERVIEW</span><h3>Events by registrations</h3></div>
+        <button class="ghost" onclick="loadDashboard()">Refresh ↻</button>
+      </div>
+      <div id="ranking" class="event-grid"></div>
+    </section>
+
+    <section id="events" class="page">
+      <div class="section-head"><div><span class="eyebrow">MANAGE</span><h3>Events</h3></div><button class="primary small" onclick="openEventModal()">+ New Event</button></div>
+      <div id="events-list" class="table-card"></div>
+    </section>
+
+    <section id="registrations" class="page">
+      <div class="section-head"><div><span class="eyebrow">TRACK</span><h3>Registrations & Check-ins</h3></div><button class="primary small" onclick="openRegistrationModal()">+ Register Student</button></div>
+      <div id="registrations-list" class="table-card"></div>
+    </section>
+
+    <section id="students" class="page">
+      <div class="section-head"><div><span class="eyebrow">PEOPLE</span><h3>Students</h3></div><button class="primary small" onclick="openStudentModal()">+ Add Student</button></div>
+      <div id="students-list" class="table-card"></div>
+    </section>
+
+    <section id="organizers" class="page">
+      <div class="section-head"><div><span class="eyebrow">PEOPLE</span><h3>Organizers</h3></div><button class="primary small" onclick="openOrganizerModal()">+ Add Organizer</button></div>
+      <div id="organizers-list" class="table-card"></div>
+    </section>
+  </main>
+</div>
+
+<div id="modal" class="modal hidden"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><div id="modal-content"></div></div></div>
+<div id="toast"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>
